@@ -21,11 +21,22 @@ class FriendList extends React.Component{
     const newFriend = {name, phone, address};
     this.setState({friends: [...this.state.friends, newFriend]} )
   }
+  handleFriendDelete = (e)=> {
+    console.log(e.target.id)
+    const newFriendsState = this.state.friends.filter(friend=> {
+      return friend.phone !== e.target.id
+    });
+    console.log(newFriendsState);
+    this.setState({friends: [...newFriendsState]})
+    //Set state for friends to be the newState
+  }
   render(){
     const friendsHtml = this.state.friends.map((friend, index) =>
           <Friend key={friend.name+ index}
           name={friend.name} phone={friend.phone}
-          address={friend.address}/>
+          address={friend.address}
+          removeFriend={this.handleFriendDelete}
+          id={friend.phone}/>
 
     )
     return(
