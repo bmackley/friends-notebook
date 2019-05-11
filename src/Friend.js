@@ -4,8 +4,9 @@ function Friend(props) {
   return(
     <div>
       <h1>{props.name}</h1>
-      <p>{props.address}</p>
-      <p>{props.phone}</p>
+      <p>Address {props.address}</p>
+      <p>Phone {props.phone}</p>
+      <button id={props.phone} onClick={props.removeFriend}>Delete</button>
     </div>
   )
 }
